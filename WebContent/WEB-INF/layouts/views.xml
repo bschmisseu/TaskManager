@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+	<definition name="index" extends="DefaultTemplate">
+		<put-attribute name="header" value="/WEB-INF/layouts/template/indexHeader.jsp" />
+    	<put-attribute name="body" value="/WEB-INF/pages/index.jsp" />
+	</definition>
+	<definition name="loginPage" extends="DefaultTemplate">
+		<put-attribute name="header" value="/WEB-INF/layouts/template/indexHeader.jsp" />
+    	<put-attribute name="body" value="/WEB-INF/pages/loginPage.jsp" />
+	</definition>
+	<definition name="registrationPage" extends="DefaultTemplate">
+		<put-attribute name="header" value="/WEB-INF/layouts/template/indexHeader.jsp" />
+    	<put-attribute name="body" value="/WEB-INF/pages/registrationPage.jsp" />
+	</definition>
+	<definition name="errorPageIndex" extends="DefaultTemplate">
+		<put-attribute name="header" value="/WEB-INF/layouts/template/indexHeader.jsp" />
+    	<put-attribute name="body" value="/WEB-INF/pages/errorPageIndex.jsp" />
+	</definition>
+	
+	<definition name="homePage" extends="HomePageTemplate">
+    	<put-attribute name="body" value="/WEB-INF/pages/homePage.jsp" />
+	</definition>
+	
+    <definition name="*" extends="DefaultTemplate">
+    	<put-attribute name="body" value="/WEB-INF/pages/{1}.jsp" />
+    </definition>
+</tiles-definitions>
