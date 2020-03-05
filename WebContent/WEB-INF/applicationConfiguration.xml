@@ -34,8 +34,8 @@
 	<bean id="dataSource" destroy-method="close" class="org.apache.commons.dbcp2.BasicDataSource">
         <property name="driverClassName" value="com.mysql.jdbc.Driver" />
         <property name="url" value="jdbc:mysql://bqmayq5x95g1sgr9.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/p5s49aqbaybimuxz" />
-        <property name="username" value="db9mpaj5ppp419eu" />
-        <property name="password" value="root" />
+        <property name="username" value="ytm0lyt3k5rx8szi" />
+        <property name="password" value="db9mpaj5ppp419eu" />
     </bean>
 	
 	<!-- Home Page Set -->
