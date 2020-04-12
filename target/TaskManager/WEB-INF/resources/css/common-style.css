@@ -1,0 +1,28 @@
+.footer
+{
+	text-align: center;
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+}
+
+#page
+{
+	position: relative;
+	min-height: calc(100vh - 50px);
+}
+
+.errorPage
+{
+	align: center;
+	text-align: center;
+	position: absolute;
+	top: 40%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+   
+.errorPage table
+{
+	text-align:left;
+}

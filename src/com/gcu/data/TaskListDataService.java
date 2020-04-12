@@ -5,13 +5,11 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 
-import com.gcu.business.TaskBusinessService;
 import com.gcu.exception.DatabaseException;
-import com.gcu.model.Task;
 import com.gcu.model.TaskList;
 
 /**
@@ -23,14 +21,12 @@ import com.gcu.model.TaskList;
  * Implementation of DataAccessInterface of a TaskList model to have CRUD functionality 
  */
 
+@Qualifier("taskListDataService")
 public class TaskListDataService implements DataAccessInterface<TaskList>
 {
 	@SuppressWarnings("unused")
 	private DataSource dataSource;
 	private JdbcTemplate jdbcTemplateObject; 
-	
-	@Autowired
-	TaskBusinessService taskService;
 
 	/**
 	 * @see DataAccessInterface.create();
@@ -95,15 +91,6 @@ public class TaskListDataService implements DataAccessInterface<TaskList>
 		//Initialize variable to count the number of rows affected
 		int returnNum = 0;
 		
-		//Gets a list of all task that are apart of the task list
-		TaskList currentList = this.viewById(id);
-		
-		//Loop to iterate through all the tasks to delete them from the database
-		for(int i = 0; i < currentList.getTaskList().size(); i ++)
-		{
-			taskService.delete(currentList.getTaskList().get(i).getId());
-		}
-		
 		//SQL Statement that deletes task list from the database
 		String sqlDelete = "DELETE FROM `LISTS_TABLE` WHERE `LISTS_TABLE`.`ID` = ?";
 		
@@ -141,14 +128,8 @@ public class TaskListDataService implements DataAccessInterface<TaskList>
 			
 			//While loop to iterate through the results
 			while(srs.next())
-			{
-				int listId = srs.getInt("ID");
-				
-				TaskBusinessService taskService = new TaskBusinessService(); 
-				
-				List<Task> taskList = taskService.viewByParentId(listId);
-				
-				taskLists.add(new TaskList(srs.getInt("ID"), srs.getInt("USERS_TABLE_ID"), taskList, srs.getString("NAME")));
+			{	
+				taskLists.add(new TaskList(srs.getInt("ID"), srs.getInt("USERS_TABLE_ID"), srs.getString("NAME")));
 			}
 		}
 		
@@ -179,12 +160,8 @@ public class TaskListDataService implements DataAccessInterface<TaskList>
 			
 			//Loops through the results set
 			while(srs.next())
-			{
-				int listId = srs.getInt("ID");
-				
-				List<Task> taskList = taskService.viewByParentId(listId);
-				
-				currentTaskList = new TaskList(srs.getInt("ID"), srs.getInt("USERS_TABLE_ID"), taskList, srs.getString("NAME"));
+			{				
+				currentTaskList = new TaskList(srs.getInt("ID"), srs.getInt("USERS_TABLE_ID"), srs.getString("NAME"));
 			}
 		}
 		
@@ -219,12 +196,8 @@ public class TaskListDataService implements DataAccessInterface<TaskList>
 			
 			//While loop to iterate through the resutls set
 			while(srs.next())
-			{
-				int listId = srs.getInt("ID");
-				
-				List<Task> taskList = taskService.viewByParentId(listId);
-				
-				TaskList currentList = new TaskList(srs.getInt("ID"), srs.getInt("USERS_TABLE_ID"), taskList, srs.getString("NAME"));
+			{	
+				TaskList currentList = new TaskList(srs.getInt("ID"), srs.getInt("USERS_TABLE_ID"), srs.getString("NAME"));
 				
 				currentList.setColor(colors[colorNum]);
 				

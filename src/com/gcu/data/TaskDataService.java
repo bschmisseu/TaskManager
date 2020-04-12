@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 
@@ -20,6 +21,7 @@ import com.gcu.model.Task;
  * Implementation of DataAccessInterface of a Task model to have CRUD functionality 
  */
 
+@Qualifier("taskDataService")
 public class TaskDataService implements DataAccessInterface<Task> {
 	
 	@SuppressWarnings("unused")

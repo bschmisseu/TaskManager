@@ -3,6 +3,7 @@ package com.gcu.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -96,7 +97,7 @@ public class HomePageController {
 		User currentUser = session.getCurrentUser();
 		
 		//Creates an primitive object of a TaskList
-		TaskList newList = new TaskList(0, currentUser.getId(), null, listName);
+		TaskList newList = new TaskList(0, currentUser.getId(), listName);
 		
 		//Adds the list to the database
 		listBusinessService.create(newList);
@@ -266,6 +267,7 @@ public class HomePageController {
 	 * @param listBusinessService - ListBusinessService: Business Service for the Task List Model
 	 */
 	@Autowired
+	@Qualifier("listBusinessService")
 	public void setListBusinessService(ListBusinessService listBusinessService) {
 		this.listBusinessService = listBusinessService;
 	}
@@ -275,6 +277,7 @@ public class HomePageController {
 	 * @param taskBusinessService - TaskBusinessService: Business Service for the Task Model
 	 */
 	@Autowired
+	@Qualifier("taskBusinessService")
 	public void setTaskBusinessService(TaskBusinessService taskBusinessService)
 	{
 		this.taskBusinessService = taskBusinessService;

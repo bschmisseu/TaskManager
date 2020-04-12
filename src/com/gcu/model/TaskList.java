@@ -38,10 +38,9 @@ public class TaskList {
 	 * @param name - String: The name a specific task list
 	 * @param color - Color: The color associated with that list
 	 */
-	public TaskList(int id, int userId, List<Task> taskList, String name) {
+	public TaskList(int id, int userId, String name) {
 		this.id = id;
 		this.userId = userId; 
-		this.taskList = taskList;
 		this.name = name;
 	}
 
