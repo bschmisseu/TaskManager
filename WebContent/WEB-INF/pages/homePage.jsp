@@ -27,7 +27,7 @@
 							<table class="userListTable" style="color: white; font-size: 26px; width: 100%">
 								<tr style="vertical-align: middle; width: 100%">
 									<td style="color: ${list.color}; padding: 15px; width: 25px;"><i class="large material-icons">adjust</i></td>
-									<td><a style="color: white; text-decoration: none;" href="/TaskManager/home/changeList?listId=${loop.index}">${list.name}</a></td>
+									<td><a style="color: white; text-decoration: none;" href="/home/changeList?listId=${loop.index}">${list.name}</a></td>
 									<td style="text-align: right; padding-right: 20px; color: #333">
 										<a style="color: inherit; text-decoration: none;" href="javascript:deleteListFunction(${loop.index})">
 											<i class="large material-icons">clear</i>
@@ -55,7 +55,7 @@
 						                </div>
 						            </span>
 						            <div class="dropdown-content" style="text-align: left">
-						                    <a href="/TaskManager" style="color: black">Logout</a>
+						                    <a href="/" style="color: black">Logout</a>
 						            </div>
 						        </div>
 								</td>
