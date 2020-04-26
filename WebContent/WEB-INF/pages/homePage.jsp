@@ -118,7 +118,7 @@
 
   <h1>Add Reminder</h1>
   
-  <form:form method="POST" modelAttribute="taskModel" action="/TaskManager/home/addTask">
+  <form:form method="POST" modelAttribute="taskModel" action="/home/addTask">
     <form:input class="inputClass" path="description" placeholder="Description" type="text" required="required" />
     <form:input class="inputClass" path="completedBy" placeholder="Date (YYYY-MM-DD HH:MM:SS)" type="datetime-local" required="required" />
     <input class="formBtn" type="submit" />
@@ -127,7 +127,7 @@
 
 <div id="addListForm">
 	<h1>Add List</h1>
-	<form:form method="POST" action="/TaskManager/home/addList">
+	<form:form method="POST" action="/home/addList">
 		<input class="inputClass" name="listName" placeholder="Name of List" type="text" required="required" />
 		<input class="formBtn" type="submit" />
 	</form:form>
@@ -137,7 +137,7 @@
 function deleteListFunction(listId)
 {
 	if (confirm("Are your sure you want to delete this list!")) {
-		var url = "/TaskManager/home/deleteList?listId=" + listId;
+		var url = "/home/deleteList?listId=" + listId;
 		document.location.href=url;
 	} else {
 	  
@@ -146,7 +146,7 @@ function deleteListFunction(listId)
 
 function deleteTaskFunction(taskId){
 	if (confirm("Are your sure you want to delete this task!")) {
-		var url = "/TaskManager/home/deleteTask?taskId=" + taskId;
+		var url = "/home/deleteTask?taskId=" + taskId;
 		document.location.href=url;
 	} else {
 	  
@@ -154,7 +154,7 @@ function deleteTaskFunction(taskId){
 }
 
 function toggleCompleted(taskNumber){
-	var url = "/TaskManager/home/toggleCompleted?taskNumber=" + taskNumber;
+	var url = "/home/toggleCompleted?taskNumber=" + taskNumber;
 	document.location.href=url;
 }
 
