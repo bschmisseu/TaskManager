@@ -1,5 +1,6 @@
 package com.gcu.business;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,8 +42,20 @@ public class ListBusinessService implements BusinessInterface<TaskList> {
 	 */
 	@Override
 	public int delete(int id) {
+		
 		TaskList currentList = doa.viewById(id);
-		List<Task> tasks = currentList.getTaskList();
+		List<Task> tasks = new ArrayList<Task>();
+		
+		List<TaskList> allList = this.viewByParentId(currentList.getUserId());
+		
+		for(int i = 0; i < allList.size(); i++)
+		{
+			if(allList.get(i).getId() == id)
+			{
+				tasks = allList.get(i).getTaskList();
+				break;
+			}
+		}
 		
 		for(int i = 0; i < tasks.size(); i++)
 		{

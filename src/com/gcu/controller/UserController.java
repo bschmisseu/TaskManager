@@ -128,7 +128,7 @@ public class UserController
 			
 			else
 			{
-				ModelAndView modelAndView = new ModelAndView("login", "user", user);
+				ModelAndView modelAndView = new ModelAndView("loginPage", "user", user);
 				modelAndView.addObject("message", "Invalid Credentials");
 				return modelAndView;
 			}
