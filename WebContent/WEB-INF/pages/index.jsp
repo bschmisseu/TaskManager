@@ -4,7 +4,7 @@
 <div class="form">
 <table style="text-align: center" class="index">
 	<tr>
-		<td><h2>Task Manager Test</h2></td>
+		<td><h2>Task Manager</h2></td>
 	</tr>
 	<tr>
 		<td>
